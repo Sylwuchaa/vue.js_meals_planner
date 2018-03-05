@@ -1,51 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Vue Meals Planner</title>
-  </head>
-  <body>
-<div class="junbotron text-center">
-    <div id="app">
-            <h1 class="display-4">Hello, Welcome!</h1>
-            <p class="lead">This is a Vue.js meals planner, a simple aplication.</p>
-            <hr class="my-4"> 
-            <p class="counter">Start in: {{counter}}!</p>
-            <p class="lead">
-              <a class="btn btn-primary btn-lg text-center" href="#" role="button">Join!</a>
-            </p>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Vue Meals Planner</title>
+</head>
+
+<body>
+  <div class="junbotron text-center">
+    <div id="app" v-cloak>
+      <h1 class="display-4">Hello, Welcome!</h1>
+      <p class="lead">This is a Vue.js meals planner, a simple aplication.</p>
+      <hr class="my-4">
+      <p class="counter">Start in: {{counter}} !</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg text-center" @click="Join" :disabled="inProgress" href="#" role="button">Join!</a>
+      </p>
     </div>
-</div>    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-    
-    
-      new Vue ({
-        el: "#app",
-        data: ""
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
 
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        counter: 5,
+        inProgress: false
+      },
+      methods: {
+        Join: function () {
+          this.inProgress = true;
+          this.countdown();
+        },
+        countdown: function () {
 
+          this.counter--;
 
+          if (this.counter > 0) {
+            setTimeout(this.countdown, 1000);
+          } else {
+            setTimeout(() => {
+            this.counter = 5;
+            this.inProgress = false;
+            },1000);
+          }
+        }
+      }
+    });
+  </script>
+</body>
 
-
-
-      });
-    
-    
-    
-    
-    
-    </script>
-  </body>
 </html>
-
