@@ -16,8 +16,8 @@
 <body>
   <div class="junbotron text-center">
     <div id="app" v-cloak>
-      <h1 class="display-4">Hello, Welcome!</h1>
-      <p class="lead">This is a Vue.js meals planner, a simple aplication.</p>
+      <h1 class="display-4">{{heading}}</h1>
+      <p class="lead">{{text}}</p>
       <hr class="my-4">
       <p class="counter">Start in: 
         {{counter}} !</p>
@@ -38,7 +38,9 @@
   <script>
     new Vue({
       el: "#app",
-      data: {
+      data: {  
+        heading: "Hello, Welcome!",
+        text: "This is a Vue.js meals planner, a simple aplication.",
         counter: 5,
         inProgress: false
       },
